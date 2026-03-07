@@ -124,6 +124,11 @@
 .readme-content a { @apply text-primary underline; }
 .readme-content blockquote { @apply border-l-4 border-primary pl-4 italic my-3; }
 .readme-content hr { @apply my-6 border-border; }
+.readme-content table { @apply w-full border-collapse mb-4; }
+.readme-content th { @apply text-left font-bold p-2 border-b-2 border-card-foreground/30; font-family: var(--font-display); }
+.readme-content td { @apply p-2 border-b border-card-foreground/15; }
+.readme-content tr:hover td { @apply bg-card-foreground/5; }
+.readme-content img { @apply max-w-full rounded my-2; }
 
 html {
   scroll-behavior: smooth;
