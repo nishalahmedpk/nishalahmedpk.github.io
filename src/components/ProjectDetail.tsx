@@ -1,7 +1,10 @@
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Github } from "lucide-react";
+import { X, Github, Loader2 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import type { Project } from "@/data/projects";
+import { fetchReadme } from "@/data/projects";
 
 interface ProjectDetailProps {
   project: Project | null;
@@ -9,6 +12,23 @@ interface ProjectDetailProps {
 }
 
 const ProjectDetail = ({ project, onClose }: ProjectDetailProps) => {
+  const [readme, setReadme] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (project?.githubUrl) {
+      setLoading(true);
+      setReadme(null);
+      fetchReadme(project.githubUrl).then((md) => {
+        setReadme(md);
+        setLoading(false);
+      });
+    } else {
+      setReadme(null);
+      setLoading(false);
+    }
+  }, [project?.githubUrl]);
+
   return (
     <AnimatePresence>
       {project && (
@@ -31,7 +51,7 @@ const ProjectDetail = ({ project, onClose }: ProjectDetailProps) => {
               <h2 className="text-3xl md:text-4xl font-bold font-display">
                 {project.title}
               </h2>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 shrink-0">
                 {project.githubUrl && (
                   <a
                     href={project.githubUrl}
@@ -55,11 +75,20 @@ const ProjectDetail = ({ project, onClose }: ProjectDetailProps) => {
               {project.description}
             </p>
 
-            {project.readme && (
+            {loading && (
+              <div className="flex items-center gap-2 text-muted-foreground py-8">
+                <Loader2 size={20} className="animate-spin" />
+                <span>Loading README...</span>
+              </div>
+            )}
+
+            {readme && (
               <>
                 <hr className="border-card-foreground/20 mb-6" />
                 <div className="readme-content">
-                  <ReactMarkdown>{project.readme}</ReactMarkdown>
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {readme}
+                  </ReactMarkdown>
                 </div>
               </>
             )}
