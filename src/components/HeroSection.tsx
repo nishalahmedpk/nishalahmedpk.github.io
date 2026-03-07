@@ -1,5 +1,6 @@
 import { FileText, Github, Linkedin } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.jpg";
+import cvPdf from "@/assets/CV.pdf";
 
 const HeroSection = () => {
   return (
@@ -30,8 +31,8 @@ const HeroSection = () => {
 
           <div className="flex items-center gap-5 pt-2">
             <a
-              href="/cv.pdf"
-              download
+              href={cvPdf}
+              download="Nishal_Ahmed_CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
@@ -40,7 +41,7 @@ const HeroSection = () => {
               <FileText size={24} />
             </a>
             <a
-              href="https://github.com/nishal"
+              href="https://github.com/nishalahmedpk"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
@@ -49,7 +50,7 @@ const HeroSection = () => {
               <Github size={24} />
             </a>
             <a
-              href="https://linkedin.com/in/nishal"
+              href="https://linkedin.com/in/nishalahmed"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"

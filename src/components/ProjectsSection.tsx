@@ -1,14 +1,16 @@
-import { useState } from "react";
 import ProjectCard from "./ProjectCard";
 import ProjectDetail from "./ProjectDetail";
 import { projects, type Project } from "@/data/projects";
 
-const ProjectsSection = () => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+interface ProjectsSectionProps {
+  selectedProject: Project | null;
+  onOpenProject: (id: string | null) => void;
+}
 
+const ProjectsSection = ({ selectedProject, onOpenProject }: ProjectsSectionProps) => {
   return (
     <>
-      <section className="px-6 md:px-12 lg:px-24 pb-24">
+      <section className="px-6 md:px-12 lg:px-24 pb-24" data-projects-section>
         <div className="text-center mb-16">
           <h2 className="section-title text-4xl md:text-5xl lg:text-6xl font-bold">
             projects
@@ -21,7 +23,7 @@ const ProjectsSection = () => {
               key={project.id}
               project={project}
               index={index}
-              onClick={() => setSelectedProject(project)}
+              onClick={() => onOpenProject(project.id)}
               selectedId={selectedProject?.id ?? null}
             />
           ))}
@@ -30,7 +32,7 @@ const ProjectsSection = () => {
 
       <ProjectDetail
         project={selectedProject}
-        onClose={() => setSelectedProject(null)}
+        onClose={() => onOpenProject(null)}
       />
     </>
   );
