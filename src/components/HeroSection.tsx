@@ -62,7 +62,12 @@ const HeroSection = () => {
 
         {/* Right photo */}
         <div className="flex justify-center md:justify-end">
-          <div className="photo-frame w-64 h-80 md:w-72 md:h-96">
+          <div className="relative w-64 h-80 md:w-72 md:h-96">
+            {/* Yellow background layer */}
+            <div className="absolute inset-0 bg-card -translate-x-2 -translate-y-2" />
+            {/* Teal border layer */}
+            <div className="absolute inset-0 border-[3px] border-primary translate-x-2 translate-y-2" />
+            {/* Photo */}
             <img
               src={profilePhoto}
               alt="Nishal Ahmed"
