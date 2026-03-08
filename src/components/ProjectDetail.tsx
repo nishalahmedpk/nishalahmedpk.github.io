@@ -75,6 +75,23 @@ const ProjectDetail = ({ project, onClose }: ProjectDetailProps) => {
               {project.description}
             </p>
 
+            {project.image && (
+              <div className="mb-6 rounded-xl overflow-hidden border border-card-foreground/15">
+                <img
+                  src={project.image}
+                  alt={`${project.title} visual`}
+                  className="w-full h-auto object-cover"
+                  loading="lazy"
+                />
+              </div>
+            )}
+
+            {project.popuptext && (
+              <p className="text-sm md:text-base mb-6 text-card-foreground/90 whitespace-pre-line leading-relaxed">
+                {project.popuptext}
+              </p>
+            )}
+
             {loading && (
               <div className="flex items-center gap-2 text-muted-foreground py-8">
                 <Loader2 size={20} className="animate-spin" />

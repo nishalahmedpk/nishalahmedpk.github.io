@@ -4,6 +4,8 @@ export interface Project {
   description: string;
   tags?: string[];
   githubUrl?: string;
+  popuptext?: string;
+  image?: string;
 }
 
 /** Extract owner/repo from a GitHub URL */
@@ -55,18 +57,12 @@ export const projects: Project[] = [
   {
     id: "4",
     title: "Neuro-Symbolic Medical Foundation Model for Healthcare",
-    description: `Abstract: 
-    Foundations models demonstrate potential in modeling multi-modal medical time
-series, however, they lack interpretability therefore reliability required for complex
-decision systems. These models tend to prioritize statistical correlations which may
-result in clinically questionable predictions. This paper proposes a Neurosymbolic
-framework that leverages Mixture-of-Experts and GraphRAG. It maps raw signals
-with structured medical logic from PrimeKG for semantic reasoning. A hierarchical
-agent system is implemented for traversing the knowledge graphs and retrieving
-subgraphs that aid in the MoE routing. Experiments on the MIMIC-IV for dataset
-shows superior forecasting accuracy compared to existing state of the art methods.
-    `,
+    description: "Multimodal medical time-series reasoning using Knowledge-Infused Semantic Graph-RAG.",
     tags: ["Time-Series", "RAG","Deep Learning"],
+    popuptext: `Abstract:
+    In the rapidly evolving landscape of healthcare, the integration of multimodal medical data has become paramount for accurate diagnosis and effective treatment planning. This paper introduces a novel neuro-symbolic medical foundation model that leverages Knowledge-Infused Semantic Graph Retrieval-Augmented Generation (RAG) to enhance reasoning capabilities in healthcare applications. Our approach combines the strengths of deep learning with symbolic reasoning, enabling the model to process and interpret complex medical time-series data effectively. We demonstrate the efficacy of our model through extensive experiments on real-world healthcare datasets, showcasing its potential to revolutionize clinical decision-making and improve patient outcomes.`,
+    image: '/Schematic.svg',
+
     // githubUrl: "https://github.com/nishal/fitness-tracker",
   },
 ];
