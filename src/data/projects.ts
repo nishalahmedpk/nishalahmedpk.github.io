@@ -55,7 +55,17 @@ export const projects: Project[] = [
   {
     id: "4",
     title: "Neuro-Symbolic Medical Foundation Model for Healthcare",
-    description: "Multimodal medical time-series reasoning using Knowledge-Infused Semantic Graph-RAG.",
+    description: `Abstract: 
+    Foundations models demonstrate potential in modeling multi-modal medical time
+series, however, they lack interpretability therefore reliability required for complex
+decision systems. These models tend to prioritize statistical correlations which may
+result in clinically questionable predictions. This paper proposes a Neurosymbolic
+framework that leverages Mixture-of-Experts and GraphRAG. It maps raw signals
+with structured medical logic from PrimeKG for semantic reasoning. A hierarchical
+agent system is implemented for traversing the knowledge graphs and retrieving
+subgraphs that aid in the MoE routing. Experiments on the MIMIC-IV for dataset
+shows superior forecasting accuracy compared to existing state of the art methods.
+    `,
     tags: ["Time-Series", "RAG","Deep Learning"],
     // githubUrl: "https://github.com/nishal/fitness-tracker",
   },
